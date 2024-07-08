@@ -290,6 +290,8 @@ const AddNodes = ({ nodesData, node, isAgentCanvas }) => {
                                             sx={{ width: '100%', pr: 2, pl: 2, my: 2 }}
                                             id='input-search-node'
                                             value={searchValue}
+                                            // eslint-disable-next-line jsx-a11y/no-autofocus
+                                            autoFocus={true}
                                             onChange={(e) => filterSearch(e.target.value)}
                                             placeholder='Search nodes'
                                             startAdornment={
