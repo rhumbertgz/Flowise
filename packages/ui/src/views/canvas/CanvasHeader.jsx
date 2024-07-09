@@ -29,6 +29,7 @@ import { generateExportFlowData } from '@/utils/genericHelper'
 import { uiBaseURL } from '@/store/constant'
 import { SET_CHATFLOW } from '@/store/actions'
 import ViewLeadsDialog from '@/ui-component/dialog/ViewLeadsDialog'
+import useSaveShorcut from '@/hooks/useSaveShortcut'
 
 // ==============================|| CANVAS HEADER ||============================== //
 
@@ -204,6 +205,8 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
             }
         }
     }, [chatflow, title, chatflowConfigurationDialogOpen])
+
+    useSaveShorcut(onSaveChatflowClick)
 
     return (
         <>
