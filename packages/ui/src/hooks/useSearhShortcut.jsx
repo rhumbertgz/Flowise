@@ -5,7 +5,7 @@ const useSearchShorcut = (inputRef) => {
     useEffect(() => {
         const component = inputRef.current
         const handleKeyDown = (event) => {
-            if ((isMac && event.metaKey && event.key === 'f') || (!isMac && event.ctrlKey && event.key === 'f')) {
+            if ((isMac && event.metaKey && event.key === 'k') || (!isMac && event.ctrlKey && event.key === 'k')) {
                 event.preventDefault()
                 component.focus()
             }
