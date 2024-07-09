@@ -286,6 +286,8 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                                         if (e.key === 'Enter') submitFlowName()
                                         if (e.key === 'Escape') setEditingFlowName(false)
                                     }}
+                                    // eslint-disable-next-line jsx-a11y/no-autofocus
+                                    autoFocus
                                 />
                                 <ButtonBase title='Save Name' sx={{ borderRadius: '50%' }}>
                                     <Avatar
