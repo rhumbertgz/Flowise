@@ -19,6 +19,7 @@ const SaveChatflowDialog = ({ show, dialogProps, onCancel, onConfirm }) => {
     const component = show ? (
         <Dialog
             open={show}
+            disableRestoreFocus // needed due to StrictMode
             fullWidth
             maxWidth='xs'
             onClose={onCancel}
@@ -40,6 +41,8 @@ const SaveChatflowDialog = ({ show, dialogProps, onCancel, onConfirm }) => {
                     onKeyDown={(e) => {
                         if (isReadyToSave && e.key === 'Enter') onConfirm(e.target.value)
                     }}
+                    // eslint-disable-next-line jsx-a11y/no-autofocus
+                    autoFocus
                 />
             </DialogContent>
             <DialogActions>
