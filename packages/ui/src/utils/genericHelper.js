@@ -737,6 +737,9 @@ export const getOS = () => {
     return os
 }
 
+export const isMac = getOS() === 'macos'
+export const isDesktop = isMac || os === 'windows' || os === 'linux'
+
 export const formatBytes = (number) => {
     if (number == null || number === undefined || number <= 0) {
         return '0 Bytes'
