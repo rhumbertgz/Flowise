@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { isMac } from '@/utils/platformHelper'
+import { isMac, isDesktop } from '@/utils/genericHelper'
 
 const useSearchShorcut = (inputRef) => {
     useEffect(() => {
@@ -15,12 +15,16 @@ const useSearchShorcut = (inputRef) => {
             if (event.key === 'Escape') component.blur()
         }
 
-        inputRef.current.addEventListener('keydown', handleInputEscape)
-        document.addEventListener('keydown', handleKeyDown)
+        if (component && isDesktop) {
+            inputRef.current.addEventListener('keydown', handleInputEscape)
+            document.addEventListener('keydown', handleKeyDown)
+        }
 
         return () => {
-            component.addEventListener('keydown', handleInputEscape)
-            document.removeEventListener('keydown', handleKeyDown)
+            if (component && isDesktop) {
+                component.addEventListener('keydown', handleInputEscape)
+                document.removeEventListener('keydown', handleKeyDown)
+            }
         }
     })
 }

@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { isMac } from '@/utils/platformHelper'
+import { isMac, isDesktop } from '@/utils/genericHelper'
 
 const useSaveShorcut = (shortcutAction) => {
     useEffect(() => {
@@ -10,10 +10,10 @@ const useSaveShorcut = (shortcutAction) => {
             }
         }
 
-        document.addEventListener('keydown', handleKeyDown)
+        if (isDesktop) document.addEventListener('keydown', handleKeyDown)
 
         return () => {
-            document.removeEventListener('keydown', handleKeyDown)
+            if (isDesktop) document.removeEventListener('keydown', handleKeyDown)
         }
     })
 }
