@@ -9,7 +9,9 @@ import { StyledFab } from '@/ui-component/button/StyledFab'
 import { IconSearch, IconArrowLeft, IconEdit } from '@tabler/icons-react'
 
 import useSearchShorcut from '@/hooks/useSearhShortcut'
-import { isMac } from '@/utils/platformHelper'
+import { isMac, isDesktop } from '@/utils/genericHelper'
+
+const keyboardShortcut = isMac ? '[⌘ + k]' : '[Ctrl + k]'
 
 const ViewHeader = ({
     children,
@@ -93,7 +95,7 @@ const ViewHeader = ({
                             inputRef={searchInputRef}
                             size='small'
                             sx={{
-                                width: '280px',
+                                width: '310px',
                                 height: '100%',
                                 display: { xs: 'none', sm: 'flex' },
                                 borderRadius: 2,
@@ -103,7 +105,7 @@ const ViewHeader = ({
                                 }
                             }}
                             variant='outlined'
-                            placeholder={`${searchPlaceholder} ${isMac ? '[⌘ + k]' : '[Ctrl + k]'}`}
+                            placeholder={`${searchPlaceholder} ${isDesktop ? keyboardShortcut : ''}`}
                             onChange={onSearchChange}
                             startAdornment={
                                 <Box
