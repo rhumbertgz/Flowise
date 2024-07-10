@@ -387,6 +387,12 @@ const NodeInputHandler = ({ inputAnchor, inputParam, data, disabled = false, isA
                                 nodes={inputParam?.acceptVariable && reactFlowInstance ? reactFlowInstance.getNodes() : []}
                                 edges={inputParam?.acceptVariable && reactFlowInstance ? reactFlowInstance.getEdges() : []}
                                 nodeId={data.id}
+                                onFocus={() => {
+                                    reactFlowInstance.draggable = false
+                                }}
+                                onBlur={() => {
+                                    reactFlowInstance.draggable = true
+                                }}
                             />
                         )}
                         {inputParam.type === 'json' && (

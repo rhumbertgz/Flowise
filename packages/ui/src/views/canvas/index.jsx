@@ -551,6 +551,8 @@ const Canvas = () => {
                                 edgeTypes={edgeTypes}
                                 onConnect={onConnect}
                                 onInit={setReactFlowInstance}
+                                nodesDraggable={reactFlowInstance ? reactFlowInstance.draggable : true}
+                                panOnDrag={reactFlowInstance ? reactFlowInstance.draggable : true}
                                 fitView
                                 deleteKeyCode={canvas.canvasDialogShow ? null : ['Delete']}
                                 minZoom={0.1}

@@ -4,7 +4,7 @@ import { FormControl, OutlinedInput, InputBase, Popover } from '@mui/material'
 import SelectVariable from '@/ui-component/json/SelectVariable'
 import { getAvailableNodesForVariable } from '@/utils/genericHelper'
 
-export const Input = ({ inputParam, value, nodes, edges, nodeId, onChange, disabled = false }) => {
+export const Input = ({ inputParam, value, nodes, edges, nodeId, onChange, onFocus = () => {}, onBlur = () => {}, disabled = false }) => {
     const [myValue, setMyValue] = useState(value ?? '')
     const [anchorEl, setAnchorEl] = useState(null)
     const [availableNodesForVariable, setAvailableNodesForVariable] = useState([])
@@ -62,6 +62,12 @@ export const Input = ({ inputParam, value, nodes, edges, nodeId, onChange, disab
                         minRows={inputParam.rows ?? 1}
                         value={myValue}
                         name={inputParam.name}
+                        onFocus={(e) => {
+                            onFocus(e)
+                        }}
+                        onBlur={(e) => {
+                            onBlur(e)
+                        }}
                         onChange={(e) => {
                             setMyValue(e.target.value)
                             onChange(e.target.value)
@@ -98,6 +104,12 @@ export const Input = ({ inputParam, value, nodes, edges, nodeId, onChange, disab
                         rows={inputParam.rows ?? 1}
                         value={myValue}
                         name={inputParam.name}
+                        onFocus={(e) => {
+                            onFocus(e)
+                        }}
+                        onBlur={(e) => {
+                            onBlur(e)
+                        }}
                         onChange={(e) => {
                             setMyValue(e.target.value)
                             onChange(e.target.value)
@@ -144,6 +156,8 @@ Input.propTypes = {
     inputParam: PropTypes.object,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     onChange: PropTypes.func,
+    onFocus: PropTypes.func,
+    onBlur: PropTypes.func,
     disabled: PropTypes.bool,
     nodes: PropTypes.array,
     edges: PropTypes.array,
